@@ -119,9 +119,9 @@
                     <label>Categoría</label>
                     <select id="selCategoria" onchange="actualizarProductos()">
                         <option value="">Seleccione...</option>
-                        <option value="Platos Fuertes">Platos Fuertes</option>
-                        <option value="Entradas/Acompañamiento">Entradas/Acompañamiento</option>
-                        <option value="Postres y Bebidas">Postres y Bebidas</option>
+                        <option value="PLATOS FUERTES">PLATOS FUERTES</option>
+                        <option value="ENTRADAS/ACOMPAÑAMIENTO">ENTRADAS/ACOMPAÑAMIENTO</option>
+                        <option value="POSTRES Y BEBIDAS">POSTRES Y BEBIDAS</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -192,9 +192,9 @@
             <div class="card">
                 <h2>⚙️ Gestión de Precios</h2>
                 <select id="filtroDb" onchange="renderizarDb()" style="margin-bottom:10px;">
-                    <option value="Platos Fuertes">Platos Fuertes</option>
-                    <option value="Entradas/Acompañamiento">Entradas/Acompañamiento</option>
-                    <option value="Postres y Bebidas">Postres y Bebidas</option>
+                    <option value="PLATOS FUERTES">PLATOS FUERTES</option>
+                    <option value="ENTRADAS/ACOMPAÑAMIENTO">ENTRADAS/ACOMPAÑAMIENTO</option>
+                    <option value="POSTRES Y BEBIDAS">POSTRES Y BEBIDAS</option>
                 </select>
                 <div class="table-container" style="max-height: 250px;">
                     <table id="tablaDb">
@@ -209,32 +209,71 @@
 </div>
 
 <script>
+    // Base de datos actualizada según las imágenes proporcionadas
     const inicial = {
-        "Platos Fuertes": [
+        "PLATOS FUERTES": [
             { nombre: "PIZZA PERSONAL AMERICANA", precio: 10.00 },
+            { nombre: "PIZZA PERSONAL HAWAIANA", precio: 13.00 },
+            { nombre: "PIZZA PERSONAL PEPPERONI", precio: 10.00 },
+            { nombre: "PIZZA PERSONAL CHORIZO", precio: 12.00 },
             { nombre: "PIZZA MEDIANA AMERICANA", precio: 20.00 },
-            { nombre: "PIZZA FAMILIAR AMERICANA", precio: 32.00 },
             { nombre: "PIZZA MEDIANA HAWAIANA", precio: 24.00 },
+            { nombre: "PIZZA MEDIANA PEPPERONI", precio: 20.00 },
+            { nombre: "PIZZA MEDIANA CHORIZO", precio: 22.00 },
+            { nombre: "PIZZA MEDIANA ESPECIAL", precio: 25.00 },
+            { nombre: "PIZZA MEDIANA PECHUGON", precio: 25.00 },
+            { nombre: "PIZZA MEDIANA VEGETARIANA", precio: 24.00 },
+            { nombre: "PIZZA MEDIANA CHAMPIÑONES", precio: 24.00 },
+            { nombre: "PIZZA MEDIANA DOS SABORES", precio: 30.00 },
+            { nombre: "PIZZA FAMILIAR AMERICANA", precio: 32.00 },
             { nombre: "PIZZA FAMILIAR HAWAIANA", precio: 37.00 },
-            { nombre: "POLLO AL HORNO ENTERO", precio: 68.00 },
-            { nombre: "1/4 POLLO AL HORNO", precio: 24.00 },
+            { nombre: "PIZZA FAMILIAR PEPPERONI", precio: 32.00 },
+            { nombre: "PIZZA FAMILIAR CHORIZO", precio: 35.00 },
+            { nombre: "PIZZA FAMILIAR ESPECIAL", precio: 40.00 },
+            { nombre: "PIZZA FAMILIAR PECHUGON", precio: 40.00 },
+            { nombre: "PIZZA FAMILIAR VEGETARIANA", precio: 37.00 },
+            { nombre: "PIZZA FAMILIAR CHAMPIÑONES", precio: 37.00 },
+            { nombre: "PIZZA FAMILIAR DOS SABORES", precio: 42.00 },
+            { nombre: "TAJADA DE PIZZA AMERICANA", precio: 5.00 },
+            { nombre: "TAJADA DE PIZZA PEPPERONI", precio: 5.00 },
+            { nombre: "TAJADA DE PIZZA CHORIZO", precio: 5.00 },
+            { nombre: "POLLO AL HORNO ARTESANAL ENTERO", precio: 68.00 },
+            { nombre: "1/2 DE POLLO AL HORNO ARTESANAL", precio: 35.00 },
+            { nombre: "1/4 DE POLLO AL HORNO ARTESANAL", precio: 24.00 },
             { nombre: "PORCIÓN DE LASAÑA", precio: 25.00 }
         ],
-        "Entradas/Acompañamiento": [
-            { nombre: "PAN AL AJO 6 PORC.", precio: 6.00 },
-            { nombre: "PAPA RELLENA", precio: 3.50 },
-            { nombre: "PORCIÓN MOLLEJITAS", precio: 15.00 }
+        "ENTRADAS/ACOMPAÑAMIENTO": [
+            { nombre: "PAN AL AJO 6 PORCIONES", precio: 6.00 },
+            { nombre: "PAPA RELLENA PORCIÓN", precio: 3.50 },
+            { nombre: "PORCIÓN DE MOLLEJITAS (12)", precio: 15.00 }
         ],
-        "Postres y Bebidas": [
-            { nombre: "PASTEL ENTERO", precio: 40.00 },
-            { nombre: "TAJADA DE PASTEL", precio: 3.00 },
-            { nombre: "JARRA CHICHA MORADA", precio: 12.00 },
-            { nombre: "COCA COLA 1.5 LT", precio: 8.00 }
+        "POSTRES Y BEBIDAS": [
+            { nombre: "PASTEL DE PLÁTANO CON CHISPAS DE CHOCOLATE", precio: 40.00 },
+            { nombre: "PASTEL DE ARÁNDANO", precio: 35.00 },
+            { nombre: "PASTEL DE VAINILLA", precio: 35.00 },
+            { nombre: "PASTEL DE PIÑA", precio: 35.00 },
+            { nombre: "PASTEL DE NARANJA", precio: 40.00 },
+            { nombre: "TAJADA DE PASTEL DE PLÁTANO", precio: 3.00 },
+            { nombre: "TAJADA DE PASTEL DE ARÁNDANO", precio: 3.00 },
+            { nombre: "TAJADA DE PASTEL DE VAINILLA", precio: 3.00 },
+            { nombre: "TAJADA DE PASTEL DE PIÑA", precio: 4.00 },
+            { nombre: "TAJADA DE PASTEL DE NARANJA", precio: 3.00 },
+            { nombre: "PICARONES PORCIÓN 4", precio: 4.00 },
+            { nombre: "PAN DE MOLDE CON JAMÓN Y QUESO", precio: 6.00 },
+            { nombre: "PAN CON POLLO", precio: 6.50 },
+            { nombre: "VASO DE JUGO COMBINADO", precio: 5.00 },
+            { nombre: "VASO DE CHICHA MORADA", precio: 4.00 },
+            { nombre: "JARRA DE LITRO CHICHA MORADA", precio: 12.00 },
+            { nombre: "CAFÉ", precio: 3.00 },
+            { nombre: "INCA KOLA 1 LT.", precio: 6.00 },
+            { nombre: "INCA KOLA 1.5 LT.", precio: 8.00 },
+            { nombre: "COCA COLA 1 LT.", precio: 6.00 },
+            { nombre: "COCA COLA 1.5 LT.", precio: 8.00 }
         ]
     };
 
-    let db = JSON.parse(localStorage.getItem('db_v6')) || inicial;
-    let ventas = JSON.parse(localStorage.getItem('ventas_v6')) || [];
+    let db = JSON.parse(localStorage.getItem('db_v_final')) || inicial;
+    let ventas = JSON.parse(localStorage.getItem('ventas_v_final')) || [];
 
     function actualizarProductos() {
         const cat = document.getElementById('selCategoria').value;
@@ -271,14 +310,14 @@
             total: parseFloat(db[cat][idx].precio)
         });
 
-        localStorage.setItem('ventas_v6', JSON.stringify(ventas));
+        localStorage.setItem('ventas_v_final', JSON.stringify(ventas));
         renderizarVentas();
     }
 
     function borrarVenta(id) {
         if(confirm("¿Eliminar registro?")) {
             ventas = ventas.filter(v => v.id !== id);
-            localStorage.setItem('ventas_v6', JSON.stringify(ventas));
+            localStorage.setItem('ventas_v_final', JSON.stringify(ventas));
             renderizarVentas();
         }
     }
@@ -321,9 +360,9 @@
             p.nombre = document.getElementById(`n-${cat}-${i}`).value;
             p.precio = parseFloat(document.getElementById(`p-${cat}-${i}`).value);
         });
-        localStorage.setItem('db_v6', JSON.stringify(db));
+        localStorage.setItem('db_v_final', JSON.stringify(db));
         actualizarProductos();
-        alert("¡Precios actualizados!");
+        alert("¡Base de datos actualizada!");
     }
 
     function exportarPDF() {
@@ -343,3 +382,4 @@
 </script>
 </body>
 </html>
+
